@@ -13,11 +13,10 @@ refs.bodyEl.addEventListener('click', chColor);
 
 function chColor(event) {
   if (event.target === refs.btnStart) {
-    setInterval(colorBody, 1000);
+    timerId = setInterval(colorBody, 1000);
     refs.btnStart.disabled = true;
     refs.btnStop.disabled = false;
-  }
-  if (event.target === refs.btnStop) {
+  } else if (event.target === refs.btnStop) {
     clearInterval(timerId);
     refs.btnStart.disabled = false;
     refs.btnStop.disabled = true;
