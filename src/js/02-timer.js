@@ -17,15 +17,14 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    if (selectedDates[0] < Date.now()) {
+  onClose([selectedDates]) {
+    const result = selectedDates < Date.now();
+    refs.btnStart.disabled = result;
+    if (result) {
       Notify.failure('Please choose a date in the future');
       return;
     }
-    if (selectedDates[0] > Date.now()) {
-      refs.btnStart.disabled = false;
-      Notify.success('The date is correct');
-    }
+    Notify.success('The date is correct');
   },
 };
 
