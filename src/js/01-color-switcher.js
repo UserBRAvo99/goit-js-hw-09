@@ -8,7 +8,7 @@ const refs = {
   btnStop: document.querySelector('button[data-stop]'),
 };
 let timerId;
-
+refs.btnStop.disabled = true;
 refs.bodyEl.addEventListener('click', chColor);
 
 function chColor(event) {
