@@ -21,17 +21,16 @@ function createPromise(position, delay) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(position, delay);
-      } else {
-        reject(position, delay);
+        resolve(Notify.success(`Fulfilled ${position} in ${delay}ms!`));
       }
+      reject(Notify.failure(`Rejected ${position} in ${delay}ms!`));
     }, delay);
   });
   return promise
-    .then(({ position, delay }) => {
+    .then(resolve => {
       Notify.success(`✅ Fulfilled ${position} in ${delay}ms!`);
     })
-    .catch(({ position, delay }) => {
+    .catch(reject => {
       Notify.failure(`❌ Rejected ${position} in ${delay}ms!`);
     });
 }
